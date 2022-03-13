@@ -1,6 +1,7 @@
 {
   "header": {
     "vocabulary_link_name": "Slovníček",
+    "forkids_link_name": "Pro děti",
     "exercises_link_name": "Cvičení",
     "about_link_name": "O nás",
     "contacts_link_name": "Kontakty"
@@ -19,10 +20,12 @@
     "box_movapp_description_bottom": "Najdete tu přehled základních komunikačních frází v češtině a ukrajinštině. Brzy přidáme nástroje k jejich procvičování a rozcestník na materiály k učení."
   },
   "dictionary_page": {
-    "title": "Česko-ukrajinský slovníček",
+    "title": "Ukrajinsko-český slovníček",
     "search_button": "Hledat",
     "search_placeholder": "Hledaný výraz",
-    "subtitle": "Vyberte si oblast"
+    "subtitle": "Vyberte si oblast",
+    "czech": "česky",
+    "ukrainian": "ukrajinsky"
   },
   "about_page": {
     "title": "<strong>Movapp.cz</strong> je projekt, který vznikl v rámci iniciativy <strong>Stojíme za Ukrajinou</strong> v komunitě experních dobrovolníků <strong>Česko.Digital.</strong>",
@@ -51,7 +54,7 @@
   "seo": {
     "homepage_page_title": "Movapp.cz – aby se Češi a Ukrajinci snadno domluvili",
     "homepage_page_description": "Přehled základních česko-ukrajinských frází a nástroje k jejich procvičování. Rozcestník materiálů k učení. Vytvářeno s láskou.",
-    "dictionary_page_title": "Ukrajinsko-Český slovník | Movapp.cz",
+    "dictionary_page_title": "Ukrajinsko-český slovník | Movapp.cz",
     "dictionary_page_description": "Základní česko-ukrajinská slovíčka a fráze rozdělená podle životních situací. Vytvářeno s láskou.",
     "contacts_page_title": "Kontakty | Movapp.cz",
     "contacts_page_description": "Chcete se stát členem týmu a pomáhat na dalším rozvoji projektu?",
