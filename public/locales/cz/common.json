@@ -24,8 +24,8 @@
     "search_button": "Hledat",
     "search_placeholder": "Hledaný výraz",
     "subtitle": "Vyberte si oblast",
-    "czech": "česky",
-    "ukrainian": "ukrajinsky"
+    "cs": "česky",
+    "uk": "ukrajinsky"
   },
   "about_page": {
     "title": "<strong>Movapp.cz</strong> je projekt, který vznikl v rámci iniciativy <strong>Stojíme za Ukrajinou</strong> v komunitě experních dobrovolníků <strong>Česko.Digital.</strong>",

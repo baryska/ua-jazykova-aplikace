@@ -1,9 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import PlayIcon from '../../public/icons/play-kids.svg';
-import { useTranslation, Trans } from 'next-i18next';
-import FlagCZIcon from '../../public/icons/cz.svg';
-import FlagUAIcon from '../../public/icons/ua.svg';
+import { KidsTranslation } from './KidsTranslation';
 
 export interface Translation {
   cz_translation: string;
@@ -14,33 +12,39 @@ export interface Translation {
 
 interface TranslationContainerProps extends Translation {
   searchText?: string;
-  setAudioIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
-  audioIsPlaying: boolean;
   image: string;
+  setPlayer: React.Dispatch<React.SetStateAction<HTMLAudioElement | null>>;
+  player: HTMLAudioElement | null;
 }
 
+/**
+ *  Displays list of translations in opened collapse component
+ *
+ * @returns
+ */
 export const KidsTranslationsContainer = ({
   cz_translation,
   ua_translation,
   ua_transcription,
   cz_transcription,
   image,
-  setAudioIsPlaying,
-  audioIsPlaying,
+  setPlayer,
+  player,
 }: TranslationContainerProps): JSX.Element => {
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
-  const player = useRef<HTMLAudioElement>();
+  const currentLanguage = i18n.language;
+  const secondaryLanguage = currentLanguage === 'ua' ? 'cz' : 'ua';
 
-  const handleTranslationAudioPlay = (language: string, text: string) => {
-    const source = `https://translate.google.com/translate_tts?tl=${language}&q=${encodeURIComponent(text)}&client=tw-ob`;
-    const audio = new Audio(source);
-    player.current = audio;
-    audio.onended = () => {
-      setAudioIsPlaying(false);
-    };
-    audio.play();
-    setAudioIsPlaying(true);
+  const languageTranslation = {
+    ua: {
+      translation: ua_translation,
+      transcription: ua_transcription,
+    },
+    cz: {
+      translation: cz_translation,
+      transcription: cz_transcription,
+    },
   };
 
   return (
@@ -49,36 +53,22 @@ export const KidsTranslationsContainer = ({
         <Image src={`/${image}.svg`} layout="fill" sizes="100%" objectFit="cover" alt={cz_translation} />
       </div>
       <div className="px-6 py-4 ">
-        <div className="flex justify-between items-center py-2 ">
-          <div className="w-full">
-            <div className="flex">
-              <FlagCZIcon width="30px" className="mr-3 shadow" />
-              <p>
-                <Trans className="block my-2">{t('dictionary_page.czech')}</Trans>
-              </p>
-            </div>
-            <p className="self-start w-full font-semibold">{cz_translation}</p>
-            <p className="text-gray-500">{cz_transcription}</p>
-          </div>
-          <button onClick={() => (audioIsPlaying ? {} : handleTranslationAudioPlay('cs', cz_translation))} aria-label="play">
-            <PlayIcon className="cursor-pointer active:scale-75 transition-all duration-300" />
-          </button>
-        </div>
-        <div className="flex justify-between self-center  py-2 items-center ">
-          <div className="w-full pr-4">
-            <div className="flex">
-              <FlagUAIcon width="30px" className="mr-3 shadow" />
-              <p>
-                <Trans className="block my-2">{t('dictionary_page.ukrainian')}</Trans>
-              </p>
-            </div>
-            <p className="w-full font-semibold">{ua_translation}</p>
-            <p className="text-gray-500">{ua_transcription}</p>
-          </div>
-          <button onClick={() => (audioIsPlaying ? {} : handleTranslationAudioPlay('uk', ua_translation))} aria-label="play">
-            <PlayIcon className="cursor-pointer active:scale-75 transition-all duration-300" />
-          </button>
-        </div>
+        <KidsTranslation
+          image={image}
+          currentLanguage={currentLanguage as 'ua' | 'cz'}
+          player={player}
+          setPlayer={setPlayer}
+          transcription={languageTranslation[currentLanguage as 'ua' | 'cz'].transcription}
+          translation={languageTranslation[currentLanguage as 'ua' | 'cz'].translation}
+        />
+        <KidsTranslation
+          image={image}
+          currentLanguage={secondaryLanguage}
+          player={player}
+          setPlayer={setPlayer}
+          transcription={languageTranslation[secondaryLanguage].transcription}
+          translation={languageTranslation[secondaryLanguage].translation}
+        />
       </div>
     </div>
   );

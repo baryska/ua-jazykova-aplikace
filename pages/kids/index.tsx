@@ -6,7 +6,7 @@ import { KidsTranslationsContainer } from '../../components/basecomponents/KidsT
 export { getStaticProps } from '../../utils/localization';
 
 const Dictionary = () => {
-  const [audioIsPlaying, setAudioIsPlaying] = useState(false);
+  const [player, setPlayer] = useState<HTMLAudioElement | null>(null);
   const { t } = useTranslation();
 
   return (
@@ -19,7 +19,7 @@ const Dictionary = () => {
       </Head>
       <div className="flex flex-wrap justify-center min-h-screen m-auto sm:py-10 px-2 sm:px-4">
         {kidsWords.map((word, index) => {
-          return <KidsTranslationsContainer key={index} {...word} setAudioIsPlaying={setAudioIsPlaying} audioIsPlaying={audioIsPlaying} />;
+          return <KidsTranslationsContainer key={index} {...word} setPlayer={setPlayer} player={player} />;
         })}
       </div>
     </div>

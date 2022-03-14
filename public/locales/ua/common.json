@@ -23,7 +23,9 @@
     "search_button": "Знайти",
     "title": "Чесько-український словник",
     "search_placeholder": "Знайти слово",
-    "subtitle": "Виберіть категорію"
+    "subtitle": "Виберіть категорію",
+    "cs": "чеський",
+    "uk": "український"
   },
   "about_page": {
     "title": "<strong>Movapp.cz</strong> – це проект, який створено в рамках ініціативи <strong>Stojíme za Ukrajinou</strong> в спільноті експертів-волонтерів <strong>Česko.Digital.</strong>",
