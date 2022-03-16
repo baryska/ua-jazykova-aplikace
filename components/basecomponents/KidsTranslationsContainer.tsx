@@ -47,6 +47,7 @@ export const KidsTranslationsContainer = ({
     },
   };
 
+  // comment
   return (
     <div className="max-w-sm rounded-2xl overflow-hidden shadow-xl w-72 m-5 md:m-8 bg-primary-yellow max-h-[32rem]">
       <div className="w-72 h-72 relative bg-white">
